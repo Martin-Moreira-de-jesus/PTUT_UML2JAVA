@@ -8,7 +8,8 @@ public abstract class Translator {
 
     /**
      * // Translates the contents of a file
-     * @exception IOException
+     *
+     * @throws IOException
      */
     public abstract void translate() throws IOException;
 
@@ -27,6 +28,13 @@ public abstract class Translator {
     }
 
     /**
+     * @return the file
+     */
+    public File getFile() {
+        return this.file;
+    }
+
+    /**
      * @param fileName the file to set the file path to
      */
     public void setFile(String fileName) {
@@ -41,15 +49,9 @@ public abstract class Translator {
     }
 
     /**
-     * @return the file
-     */
-    public File getFile() {
-        return this.file;
-    }
-
-    /**
      * //initializes the reader with the class attribute file
-     * @exception FileNotFoundException
+     *
+     * @throws FileNotFoundException
      */
     public void initializeReader() throws FileNotFoundException {
         this.reader = new BufferedReader(new FileReader(this.getFile()));

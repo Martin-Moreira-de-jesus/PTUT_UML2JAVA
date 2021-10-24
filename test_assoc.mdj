@@ -1,0 +1,55 @@
+				{
+					"_type": "UMLClass",
+					"_id": "AAAAAAF8sc4GmkcdeZc=",
+					"_parent": {
+						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+					},
+					"name": "Student",
+					"ownedElements": [
+						{
+							"_type": "UMLAssociation",
+							"_id": "AAAAAAF8sd7O5Uh6THw=",
+							"_parent": {
+								"$ref": "AAAAAAF8sc4GmkcdeZc="
+							},
+							"end1": {
+								"_type": "UMLAssociationEnd",
+								"_id": "AAAAAAF8sd7O50h7K08=",
+								"_parent": {
+									"$ref": "AAAAAAF8sd7O5Uh6THw="
+								},
+								"name": "myStudents",
+								"reference": {
+									"$ref": "AAAAAAF8sc4GmkcdeZc="
+								},
+								"visibility": "private",
+								"multiplicity": "*"
+							},
+							"end2": {
+								"_type": "UMLAssociationEnd",
+								"_id": "AAAAAAF8sd7O6Eh89Ik=",
+								"_parent": {
+									"$ref": "AAAAAAF8sd7O5Uh6THw="
+								},
+								"name": "myProf",
+								"reference": {
+									"$ref": "AAAAAAF8sc4cJ0dHQFY="
+								},
+								"visibility": "private",
+								"multiplicity": "0..1"
+							}
+						}
+					]
+				},
+				{
+					"_type": "UMLClass",
+					"_id": "AAAAAAF8sc4cJ0dHQFY=",
+					"_parent": {
+						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+					},
+					"name": "Prof"
+				}
+			]
+		}
+	]
+}

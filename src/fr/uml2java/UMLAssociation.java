@@ -1,7 +1,5 @@
 package fr.uml2java;
 
-import java.util.ArrayList;
-
 public class UMLAssociation extends UMLObject {
     private UMLAssociationEnd end1;
     private UMLAssociationEnd end2;
@@ -19,20 +17,20 @@ public class UMLAssociation extends UMLObject {
         return super.getName();
     }
 
-    public String getId() {
-        return super.getId();
-    }
-
-    public String getParent() {
-        return super.getParent();
-    }
-
     public void setName(String name) {
         super.setName(name);
     }
 
+    public String getId() {
+        return super.getId();
+    }
+
     public void setId(String id) {
         super.setId(id);
+    }
+
+    public String getParent() {
+        return super.getParent();
     }
 
     public void setParent(String parent) {

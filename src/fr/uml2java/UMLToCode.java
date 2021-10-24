@@ -4,10 +4,18 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class UMLToCode extends Translator {
     private List<UMLClass> classes;
     private String readLine = "nonull";
+
+    public UMLToCode() throws FileNotFoundException {
+        super();
+        classes = new ArrayList<>();
+        this.setFile("test_assoc.mdj");
+        this.initializeReader();
+    }
 
     public void addSpecs(UMLObject object) throws IOException {
         readLine = this.getLine();
@@ -70,16 +78,6 @@ public class UMLToCode extends Translator {
         }
         r = r.substring(begin + 1);
         return r;
-    }
-
-    /**
-     * //TODO
-     */
-    public UMLToCode() throws FileNotFoundException {
-        super();
-        classes = new ArrayList<>();
-        this.setFile("abstractClass.mdj");
-        this.initializeReader();
     }
 
     public void displayFile() throws IOException {
@@ -314,6 +312,49 @@ public class UMLToCode extends Translator {
                 this.addClass();
             }
             readLine = this.getReader().readLine();
+        }
+        establishLinks();
+    }
+
+    public void evaluateMultiplicity(UMLAttribute umlAttribute, String multiplicity) {
+        switch (multiplicity) {
+            case "1" -> umlAttribute.setInitialized();
+            case "*", "0..*" -> umlAttribute.setList();
+            case "1..*" -> {
+                umlAttribute.setList();
+                umlAttribute.setNotEmpty();
+            }
+            default -> {
+                //TODO
+            }
+        }
+    }
+
+    public void establishLinks() {
+        String refId;
+        for (UMLClass umlClass : classes) {
+            for (UMLAssociation umlAssociation : umlClass.getAssociations()) {
+                UMLAssociationEnd umlAssociationEnd2 = umlAssociation.getEnd2();
+                UMLAssociationEnd umlAssociationEnd1 = umlAssociation.getEnd1();
+
+                refId = umlAssociation.getEnd2().getReference();
+                for (UMLClass umlClass1 : classes) {
+                    if (umlClass1.getId().equals(refId)) {
+                        UMLAttribute umlAttribute = new UMLAttribute();
+                        umlAttribute.setName(umlAssociationEnd2.getName());
+                        this.evaluateMultiplicity(umlAttribute, umlAssociationEnd2.getMultiplicity());
+                        umlAttribute.setType(umlClass1.getName());
+                        umlClass.addAttribute(umlAttribute);
+                        if (umlAssociationEnd1.getName() != null) {
+                            UMLAttribute umlAttribute2 = new UMLAttribute();
+                            umlAttribute2.setName(umlAssociationEnd2.getName());
+                            this.evaluateMultiplicity(umlAttribute2, umlAssociationEnd2.getMultiplicity());
+                            umlAttribute2.setType(umlClass1.getName());
+                            umlClass1.addAttribute(umlAttribute2);
+                        }
+                    }
+                }
+            }
         }
     }
 

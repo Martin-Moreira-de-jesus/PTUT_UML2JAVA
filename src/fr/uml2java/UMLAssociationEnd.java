@@ -9,7 +9,7 @@ public class UMLAssociationEnd extends UMLObject {
     public String toString() {
         String s = super.toString();
         s = s.substring(0, s.length() - 2);
-        return  s + " with visibility : "
+        return s + " with visibility : "
                 + visibility + "; with multiplicity : " + multiplicity
                 + "; pointing to class with id : " + reference + '\n';
     }
@@ -18,36 +18,36 @@ public class UMLAssociationEnd extends UMLObject {
         return visibility;
     }
 
-    public String getMultiplicity() {
-        return multiplicity;
-    }
-
-    public String getName() {
-        return super.getName();
-    }
-
-    public String getId() {
-        return super.getId();
-    }
-
-    public String getParent() {
-        return super.getParent();
-    }
-
     public void setVisibility(String visibility) {
         this.visibility = visibility;
+    }
+
+    public String getMultiplicity() {
+        return multiplicity;
     }
 
     public void setMultiplicity(String multiplicity) {
         this.multiplicity = multiplicity;
     }
 
+    public String getName() {
+        return super.getName();
+    }
+
     public void setName(String name) {
         super.setName(name);
     }
 
+    public String getId() {
+        return super.getId();
+    }
+
     public void setId(String id) {
         super.setId(id);
+    }
+
+    public String getParent() {
+        return super.getParent();
     }
 
     public void setParent(String parent) {

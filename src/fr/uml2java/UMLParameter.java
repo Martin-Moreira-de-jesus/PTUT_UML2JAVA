@@ -30,20 +30,20 @@ public class UMLParameter extends UMLAttribute {
         return super.getName();
     }
 
-    public String getId() {
-        return super.getId();
-    }
-
-    public String getParent() {
-        return super.getParent();
-    }
-
     public void setName(String name) {
         super.setName(name);
     }
 
+    public String getId() {
+        return super.getId();
+    }
+
     public void setId(String id) {
         super.setId(id);
+    }
+
+    public String getParent() {
+        return super.getParent();
     }
 
     public void setParent(String parent) {

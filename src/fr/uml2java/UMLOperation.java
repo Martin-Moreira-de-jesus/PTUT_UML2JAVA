@@ -14,7 +14,7 @@ public class UMLOperation extends UMLObject {
     @Override
     public String toString() {
         String s = super.toString();
-        s = s.substring(0, s.length()-2) + ((isAbstract) ? " isAbstract;" : "") + " with parameters :\n";
+        s = s.substring(0, s.length() - 2) + ((isAbstract) ? " isAbstract;" : "") + " with parameters :\n";
         for (UMLParameter umlParameter : umlParameters) {
             s += "\t\t\t" + umlParameter.toString();
         }
@@ -37,20 +37,20 @@ public class UMLOperation extends UMLObject {
         return super.getName();
     }
 
-    public String getId() {
-        return super.getId();
-    }
-
-    public String getParent() {
-        return super.getParent();
-    }
-
     public void setName(String name) {
         super.setName(name);
     }
 
+    public String getId() {
+        return super.getId();
+    }
+
     public void setId(String id) {
         super.setId(id);
+    }
+
+    public String getParent() {
+        return super.getParent();
     }
 
     public void setParent(String parent) {
